@@ -5,7 +5,9 @@ const login = require("./login.js");
 const app = express();
 const port = process.env.PORT;
 app.use(express.json());
-
+app.get("/", (req, res) => {
+	req.send("hi either login or signup");
+});
 app.get("/users/login", async (req, res) => {
 	const data = await login(req.body);
 	if (data) res.send(data);
